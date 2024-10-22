@@ -11,6 +11,6 @@ conda activate r-dada2_new
 workDir=$HOME/$1
 cd $workDir
 
-Rscript ~/repo/fungi_ITS2_dada2_protocol_07162024/sequence_processing_and_dada2/3_dada2_core.r $workDir
+Rscript ~/repo/dada2_protocol_16S_10222024/sequence_processing_and_dada2/3_dada2_core.r $workDir
 
 
