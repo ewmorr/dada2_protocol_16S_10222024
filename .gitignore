@@ -1,0 +1,8 @@
+.DS_Store
+
+# Ignore the data folder
+data/
+
+# Ignore the figures folder
+figures/
+.Rproj.user
