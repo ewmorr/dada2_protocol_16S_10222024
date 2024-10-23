@@ -29,7 +29,7 @@ if [[ $locus == "16S" ]]; then
     #rev.rc
     revRC=AAACTYAAAKRAATTGRCGG
     
-    if [[ -n $3 -a -n $4 ]]; then
+    if [[ -n $3 ]] && [[ -n $4 ]]; then
         fwdTrunc=$3
         revTrunc=$4
     else
@@ -48,7 +48,7 @@ elif [[ $locus == "18S" ]]; then
     #rev.rc
     fwdRC=GTAGGTGAACCTGCAGAAGGATCA
     
-    if [[ -n $3 -a -n $4 ]]; then
+    if [[ -n $3 ]] && [[ -n $4 ]]; then
         fwdTrunc=$3
         revTrunc=$4
     else
