@@ -52,9 +52,9 @@ done
 ```
 
 ### Step 1. check primer/adapter orientation, remove adapters, and check quality
-Run the first script. You pass the script to sbatch, and pass the name of your parent directory or "working directory" to the script as an argument
+Run the first script. You pass the script to sbatch, and pass the name of your parent directory or "working directory" to the script as the first argument. The second argument should be one of `16S` or `18S`. The second argument determines whether the bacterial V4-V5 region primers (515f-926r) or the Earth Microbiome Project (Eukaryotic) 18S V9 primers are used in primer searches. 
 ```
-sbatch ~/repo/dada2_protocol_16S_10222024/premise/1_dada2_workflow.primer_and_qual_checks.slurm test_run
+sbatch ~/repo/dada2_protocol_16S_10222024/premise/1_dada2_workflow.primer_and_qual_checks.slurm test_run 16S
 ```
 The script has written some initial quality checks to the `dada2_processing_tables_figs` directory. Download these and take a look. Note that we perform a hard length truncation in this step (L68 of `sequence_processing_and_dada2/2_post_cutadapt_primer_check_qual_filter.r` argument `truncLen=c(240,240)` truncates the fwd and rev reads, respectively, at 240 bp). You should inspect both the pre quality filtering and post quality filtering graphs to look for a drop in quality scores towards the end of the read. If the current length truncation does not seem adequate to trim the portion of the read qith a length dependent drop in quality (if any) than adjust the `truncLen` argument as necessary. E.g., see the examples [here](https://benjjneb.github.io/dada2/tutorial.html). Note that if a large number of reads are dropped at this step and there is significant quality tailing (as described above) it may be desirable to reduce truncLen in order to maintain more reads passing the maxEE filter.
 
@@ -63,9 +63,10 @@ The script has written some initial quality checks to the `dada2_processing_tabl
 ```
 sbatch ~/repo/dada2_protocol_16S_10222024/premise/2_dada2_workflow.dada2.slurm test_run
 ```
-Check `dada2_processing_tables_figs/read_processing_tracking.csv` for a breakdown of the number of reads remaining after each prcessing step.
+Check `dada2_processing_tables_figs/read_processing_tracking.csv` for a breakdown of the number of reads remaining after each prcessing step. The primary outputs are in the folder `dada2_core`. The file `ASVs_counts.tsv` is the sample X ASV table, the file `ASVs.fa` contains the representative sequences of the ASVs, and the file `asv_lens.csv` contains the frequency distribution of lengths of the ASVs (may be useful as a sanity check).
 
-### Step 3. Taxonomic classification
+### Step 3. Taxonomic classification. The first argument is again your working directory. The second argument should be one of `16S`, `18S`, or `all`. This argument determines whether the [SILVA v138 bacterial SSU database](https://benjjneb.github.io/dada2/training.html), the [EUKARYOME v1.9 eukaryotic SSU database](https://eukaryome.org) or a combination of both is used as the reference for taxnomic ID. Using the combined database (option `all`) will increase run time, but the EMP eukaryotic SSU primers are known to amplify bacteria, so it may be desirable to use the combined database in cases where it is suspected that bacteria have been comamplified with eukaryotes.
 ```
-sbatch ~/repo/dada2_protocol_16S_10222024/premise/3_dada2_workflow.taxonomic_id.slurm test_run
+sbatch ~/repo/dada2_protocol_16S_10222024/premise/3_dada2_workflow.taxonomic_id.slurm test_run 16S
 ```
+The file `ASVs_taxonomy.tsv` within the `dada2_core` filder contains the ASV taxonomic assignment and the file `ASVs_taxonomy_bootstrapVals.tsv` contains the bootstrap confidence scores of the taxonomic assignments.
