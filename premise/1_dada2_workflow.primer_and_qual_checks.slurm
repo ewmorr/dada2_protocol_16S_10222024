@@ -52,8 +52,8 @@ elif [[ $locus == "18S" ]]; then
         fwdTrunc=$3
         revTrunc=$4
     else
-        fwdTrunc=200
-        revTrunc=200
+        fwdTrunc=125
+        revTrunc=125
     fi
 
 else
