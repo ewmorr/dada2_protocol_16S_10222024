@@ -21,8 +21,8 @@ if(locus == "16S"){
     FWD = "GTGYCAGCMGCCGCGGTAA" #16S 515F primer
     REV = "CCGYCAATTYMTTTRAGTTT" #16S 926R primer
 } else if(locus == "18S"){
-    FWD = "GTACACACCGCCCGTC" #18s-Euk_1391f primer
-    REV = "TGATCCTTCTGCAGGTTCACCTAC" #18s-Euk_r primer
+    REV = "GTACACACCGCCCGTC" #18s-Euk_1391f primer
+    FWD = "TGATCCTTCTGCAGGTTCACCTAC" #18s-Euk_r primer
 }
 
 #reverse, complement, and RC the primers
