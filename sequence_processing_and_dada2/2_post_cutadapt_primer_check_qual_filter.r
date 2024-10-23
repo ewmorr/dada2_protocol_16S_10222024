@@ -9,10 +9,11 @@ args = commandArgs(trailingOnly=TRUE)
 
 workDir = args[1]
 locus = args[2]
-fwdTrunc = args[3]
-revTrunc = args[4]
+fwdTrunc = as.numeric(args[3])
+revTrunc = as.numeric(args[4])
 
-print(paste0("fwd trunx is ", class(fwdTrunc)))
+print(paste("fwdTrunc is", class(fwdTrunc), fwdTrunc))
+print(paste("revTrunc is", class(revTrunc), revTrunc))
 
 seqDir = file.path(workDir, "cutadapt")
 #list.files(seqDir)
