@@ -61,6 +61,8 @@ else
     exit 1
 fi
 
+echo "Locus is set to $locus. FWD read truncation length is $fwdTrunc. REV read truncation length is $revTrunc."
+
 # It is not strictly necessary to trim based on RC of primer bc we perform a hard length truncation.
 # However, there does not seem to be a downside (except possibly run time).
 # Sometimes primer artifacts occur during the second PCR step. Therefore we still include the RC trim step.
