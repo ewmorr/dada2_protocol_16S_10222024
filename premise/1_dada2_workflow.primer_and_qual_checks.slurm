@@ -38,15 +38,15 @@ if [[ $locus == "16S" ]]; then
     fi
     
 elif [[ $locus == "18S" ]]; then
-    #primers for bacterial 16S V4-V5 region
+    #primers for euk 18S V9 region. Note that we changed the fwd and rev because it appears they were sequenced backwards (Jeff H contructs)
     #fwd primer 18s-Euk_1391f
-    fwd=GTACACACCGCCCGTC
+    rev=GTACACACCGCCCGTC
     #fwd.rc
-    fwdRC=GACGGGCGGTGTGTAC
+    revRC=GACGGGCGGTGTGTAC
     #rev 18s-Euk_r (earth microbiome project)
-    rev=TGATCCTTCTGCAGGTTCACCTAC
+    fwd=TGATCCTTCTGCAGGTTCACCTAC
     #rev.rc
-    revRC=GTAGGTGAACCTGCAGAAGGATCA
+    fwdRC=GTAGGTGAACCTGCAGAAGGATCA
     
     if [[ -n $3 -a -n $4]]; then
         fwdTrunc=$3
