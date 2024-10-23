@@ -28,6 +28,15 @@ if [[ $locus == "16S" ]]; then
     rev=CCGYCAATTYMTTTRAGTTT
     #rev.rc
     revRC=AAACTYAAAKRAATTGRCGG
+    
+    if [[ -n $3 -a -n $4]]; then
+        fwdTrunc=$3
+        revTrunc=$4
+    else
+        fwdTrunc=220
+        revTrunc=220
+    fi
+    
 elif [[ $locus == "18S" ]]; then
     #primers for bacterial 16S V4-V5 region
     #fwd primer 18s-Euk_1391f
@@ -38,6 +47,15 @@ elif [[ $locus == "18S" ]]; then
     rev=TGATCCTTCTGCAGGTTCACCTAC
     #rev.rc
     revRC=GTAGGTGAACCTGCAGAAGGATCA
+    
+    if [[ -n $3 -a -n $4]]; then
+        fwdTrunc=$3
+        revTrunc=$4
+    else
+        fwdTrunc=200
+        revTrunc=200
+    fi
+
 else
     echo "Unrecognized locus. Please input either 16S or 18S as the second argument"
     exit 1
@@ -63,6 +81,6 @@ do(
 )
 done
 
-Rscript ~/repo/dada2_protocol_16S_10222024/sequence_processing_and_dada2/2_post_cutadapt_primer_check_qual_filter.r $workDir $locus
+Rscript ~/repo/dada2_protocol_16S_10222024/sequence_processing_and_dada2/2_post_cutadapt_primer_check_qual_filter.r $workDir $locus $fwdTrunc $revTrunc
 #this is a good place to stop to check primer orientation and quality profiles
 

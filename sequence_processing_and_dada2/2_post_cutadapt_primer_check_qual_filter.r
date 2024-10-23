@@ -9,6 +9,8 @@ args = commandArgs(trailingOnly=TRUE)
 
 workDir = args[1]
 locus = args[2]
+fwdTrunc = args[3]
+revTrunc = args[4]
 
 seqDir = file.path(workDir, "cutadapt")
 #list.files(seqDir)
@@ -72,8 +74,8 @@ fnFs.qual <- file.path(path.qual, basename(fnFs.cut))
 fnRs.qual <- file.path(path.qual, basename(fnRs.cut))
 
 out.qual <- filterAndTrim(fnFs.cut, fnFs.qual, fnRs.cut, fnRs.qual, maxN = 0, maxEE = c(2, 2),
-truncQ = 2, truncLen=c(220,220), minLen = 10, rm.phix = TRUE, compress = TRUE, multithread = TRUE)  # note we are performing a pretty lax length filter here `truncLen=c(240,240)`. We don't get much qaulity tailing on normal runs.
-# MAKE SURE to inspect quality profiles. If quality scores display a strong decrease as a function of sequence length, adjust these parameters appropriately
+truncQ = 2, truncLen=c(fwdTrunc,revTrunc), minLen = 10, rm.phix = TRUE, compress = TRUE, multithread = TRUE)
+# MAKE SURE to inspect quality profiles. If quality scores display a strong decrease as a function of sequence length, adjust fwdTrunc and revTrunc parameters appropriately
 saveRDS(out.qual, file = file.path(checksDir, "qual_read_counts.rds"))
 # sort filtered read files
 fnFs.qual <- sort(list.files(path.qual, pattern = "_R1_001.fastq.gz", full.names = TRUE))
