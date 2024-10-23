@@ -12,7 +12,7 @@ locus = args[2]
 fwdTrunc = args[3]
 revTrunc = args[4]
 
-print0(paste("fwd trunx is ", class(fwdTrunc))
+print0(paste("fwd trunx is ", class(fwdTrunc)))
 
 seqDir = file.path(workDir, "cutadapt")
 #list.files(seqDir)
