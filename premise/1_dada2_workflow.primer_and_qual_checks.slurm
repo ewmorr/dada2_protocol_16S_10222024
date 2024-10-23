@@ -9,26 +9,42 @@ module load anaconda/colsa
 conda activate r-dada2_new
 
 workDir=$HOME/$1
+locus=$2
 
 cd $workDir
 
 #Run first R scripts
-Rscript ~/repo/dada2_protocol_16S_10222024/sequence_processing_and_dada2/1_dada2_primer_check.r $workDir
+Rscript ~/repo/dada2_protocol_16S_10222024/sequence_processing_and_dada2/1_dada2_primer_check.r $workDir $locus
 
 mkdir $workDir/cutadapt
 
-#primers for bacterial 16S V4-V5 region
-#fwd primer (515F)
-fwd=GTGYCAGCMGCCGCGGTAA
-#fwd.rc
-fwdRC=TTACCGCGGCKGCTGRCAC
-#rev (926R)
-rev=CCGYCAATTYMTTTRAGTTT
-#rev.rc
-revRC=AAACTYAAAKRAATTGRCGG
+if [[ $locus == "16S" ]]; then
+    #primers for bacterial 16S V4-V5 region
+    #fwd primer (515F)
+    fwd=GTGYCAGCMGCCGCGGTAA
+    #fwd.rc
+    fwdRC=TTACCGCGGCKGCTGRCAC
+    #rev (926R)
+    rev=CCGYCAATTYMTTTRAGTTT
+    #rev.rc
+    revRC=AAACTYAAAKRAATTGRCGG
+elif [[ $locus == "18S" ]]; then
+    #primers for bacterial 16S V4-V5 region
+    #fwd primer 18s-Euk_1391f
+    fwd=GTACACACCGCCCGTC
+    #fwd.rc
+    fwdRC=GACGGGCGGTGTGTAC
+    #rev 18s-Euk_r (earth microbiome project)
+    rev=TGATCCTTCTGCAGGTTCACCTAC
+    #rev.rc
+    revRC=GTAGGTGAACCTGCAGAAGGATCA
+else
+    echo "Unrecognized locus. Please input either 16S or 18S as the second argument"
+    exit 1
+fi
 
-# It is not strictly necessary to trim based on RC of primer bc there is little to no length variation in 16S
-# and we do not expect read-through. However, there does not seem to be a downside (except possibly run time).
+# It is not strictly necessary to trim based on RC of primer bc we perform a hard length truncation.
+# However, there does not seem to be a downside (except possibly run time).
 # Sometimes primer artifacts occur during the second PCR step. Therefore we still include the RC trim step.
 for i in filtN/*R1*
 do(
@@ -47,6 +63,6 @@ do(
 )
 done
 
-Rscript ~/repo/dada2_protocol_16S_10222024/sequence_processing_and_dada2/2_post_cutadapt_primer_check_qual_filter.r $workDir
+Rscript ~/repo/dada2_protocol_16S_10222024/sequence_processing_and_dada2/2_post_cutadapt_primer_check_qual_filter.r $workDir $locus
 #this is a good place to stop to check primer orientation and quality profiles
 

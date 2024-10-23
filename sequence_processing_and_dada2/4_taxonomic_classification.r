@@ -4,10 +4,10 @@ args = commandArgs(trailingOnly=TRUE)
 
 seqTabPath = args[1]
 outDir = args[2]
-unite.ref = args[3]
+db.ref = args[3]
 
 seqtab.nochim = readRDS(file.path(seqTabPath))
-taxa.w_bootstraps <- assignTaxonomy(seqtab.nochim, unite.ref, multithread = 8, tryRC = TRUE, outputBootstraps = T)
+taxa.w_bootstraps <- assignTaxonomy(seqtab.nochim, db.ref, multithread = 8, tryRC = TRUE, outputBootstraps = T)
 
 saveRDS(taxa.w_bootstraps, file.path(outDir, "taxa_w_bootstraps.rds"))
 
