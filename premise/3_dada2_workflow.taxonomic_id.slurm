@@ -13,10 +13,14 @@ locus=$2
 
 if [[ $locus == "16S" ]]; then
     db="/mnt/home/garnas/ewj4/blast_dbs/silva_nr99_v138.1_train_set.fa"
+#elif [[ $locus == "18S" ]]; then
+#    db="/mnt/home/garnas/ewj4/blast_dbs/eukaryome_General_EUK_SSU_v1.9.fasta"
 elif [[ $locus == "18S" ]]; then
-    db="/mnt/home/garnas/ewj4/blast_dbs/eukaryome_General_EUK_SSU_v1.9.fasta"
-elif [[ $locus == "all" ]]; then
-    db="/mnt/home/garnas/ewj4/blast_dbs/combined_silva_v138-eukaryome_ssu_v1.9.fasta";
+    db="/mnt/home/garnas/ewj4/blast_dbs/pr2_version_5.0.0_SSU_dada2.fasta"
+#elif [[ $locus == "all" ]]; then
+#    db="/mnt/home/garnas/ewj4/blast_dbs/combined_silva_v138-eukaryome_ssu_v1.9.fasta";
+elif [[ $locus == "18S-unite" ]]; then
+    db="/mnt/home/garnas/ewj4/blast_dbs/unite_07252023/sh_general_release_dynamic_singletons_allEuk_25.07.2023.fasta";
 else
     echo "Unrecognized locus. Please input 16S, 18S, or all as the second argument"
     exit 1
