@@ -3,6 +3,7 @@
 #SBATCH --job-name="dada2"
 #SBATCH --output=dada2_workflow.taxonomic_id.out
 #SBATCH --partition=shared
+#SBATCH --mem=256G
 
 module purge
 module load anaconda/colsa
@@ -21,7 +22,7 @@ elif [[ $locus == "18S-unite" ]]; then #unite is not recommended. It's not clear
     db="/mnt/home/garnas/ewj4/blast_dbs/unite_07252023/sh_general_release_dynamic_singletons_allEuk_25.07.2023.fasta";
 elif [[ $locus == "18S-eukaryome-long" ]]; then
     db="/mnt/home/garnas/ewj4/blast_dbs/eukaryome/General_EUK_longread_v1.9.fasta"
-elif [[ $locus == "18S-eukaryome-ITS" ]]; then
+elif [[ $locus == "18S-eukaryome-ITS" ]]; then #throws memory error with basic settings
     db="/mnt/home/garnas/ewj4/blast_dbs/eukaryome/General_EUK_ITS_v1.9.fasta"
 else
     echo "Unrecognized locus. Please input 16S, 18S, or all as the second argument"
