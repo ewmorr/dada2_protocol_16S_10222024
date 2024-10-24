@@ -74,4 +74,4 @@ The first argument is again your working directory. The second argument should b
 ```
 sbatch ~/repo/dada2_protocol_16S_10222024/premise/3_dada2_workflow.taxonomic_id.slurm test_run 16S
 ```
-The file `ASVs_taxonomy.tsv` within the `dada2_core` filder contains the ASV taxonomic assignment and the file `ASVs_taxonomy_bootstrapVals.tsv` contains the bootstrap confidence scores of the taxonomic assignments.
+The file `ASVs_taxonomy.tsv` within the `dada2_core` folder contains the ASV taxonomic assignment and the file `ASVs_taxonomy_bootstrapVals.tsv` contains the bootstrap confidence scores of the taxonomic assignments.
