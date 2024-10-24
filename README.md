@@ -67,9 +67,10 @@ See the examples [here](https://benjjneb.github.io/dada2/tutorial.html) for hint
 ```
 sbatch ~/repo/dada2_protocol_16S_10222024/premise/2_dada2_workflow.dada2.slurm test_run
 ```
-Check `dada2_processing_tables_figs/read_processing_tracking.csv` for a breakdown of the number of reads remaining after each prcessing step. The primary outputs are in the folder `dada2_core`. The file `ASVs_counts.tsv` is the sample X ASV table, the file `ASVs.fa` contains the representative sequences of the ASVs, and the file `asv_lens.csv` contains the frequency distribution of lengths of the ASVs (may be useful as a sanity check).
+Check `dada2_processing_tables_figs/read_processing_tracking.csv` for a breakdown of the number of reads remaining after each prcessing step. The primary outputs are in the folder `dada2_core`. The file `ASVs_counts.tsv` is the sample x ASV table, the file `ASVs.fa` contains the representative sequences of the ASVs, and the file `asv_lens.csv` contains the frequency distribution of lengths of the ASVs (may be useful as a sanity check).
 
-### Step 3. Taxonomic classification. The first argument is again your working directory. The second argument should be one of `16S`, `18S`, or `all`. This argument determines whether the [SILVA v138 bacterial SSU database](https://benjjneb.github.io/dada2/training.html), the [EUKARYOME v1.9 eukaryotic SSU database](https://eukaryome.org) or a combination of both is used as the reference for taxnomic ID. Using the combined database (option `all`) will increase run time, but the EMP eukaryotic SSU primers are known to amplify bacteria, so it may be desirable to use the combined database in cases where it is suspected that bacteria have been comamplified with eukaryotes.
+### Step 3. Taxonomic classification. 
+The first argument is again your working directory. The second argument should be one of `16S`, `18S`, or `all`. This argument determines whether the [SILVA v138 bacterial SSU database](https://benjjneb.github.io/dada2/training.html), the [EUKARYOME v1.9 eukaryotic SSU database](https://eukaryome.org) or a combination of both is used as the reference for taxnomic ID. Using the combined database (option `all`) will increase run time, but the EMP eukaryotic SSU primers are known to amplify bacteria, so it may be desirable to use the combined database in cases where it is suspected that bacteria have been coamplified with eukaryotes.
 ```
 sbatch ~/repo/dada2_protocol_16S_10222024/premise/3_dada2_workflow.taxonomic_id.slurm test_run 16S
 ```
