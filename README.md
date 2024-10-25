@@ -70,7 +70,7 @@ sbatch ~/repo/dada2_protocol_16S_10222024/premise/2_dada2_workflow.dada2.slurm t
 Check `dada2_processing_tables_figs/read_processing_tracking.csv` for a breakdown of the number of reads remaining after each prcessing step. The primary outputs are in the folder `dada2_core`. The file `ASVs_counts.tsv` is the sample x ASV table, the file `ASVs.fa` contains the representative sequences of the ASVs, and the file `asv_lens.csv` contains the frequency distribution of lengths of the ASVs (may be useful as a sanity check).
 
 ### Step 3. Taxonomic classification. 
-The first argument is again your working directory. The second argument should be one of `16S`, `18S`. This argument determines whether the [SILVA v138 bacterial SSU database](https://benjjneb.github.io/dada2/training.html) or the [PR2 v5.0 SSU database](https://eukaryome.org) is used as the reference for taxnomic ID. There are other databases available that may be of interest, but these are a good start.
+The first argument is again your working directory. The second argument should be one of `16S`, `18S`. This argument determines whether the [SILVA v138 bacterial SSU database](https://benjjneb.github.io/dada2/training.html) or the [PR2 v5.0 SSU database](https://github.com/pr2database/pr2database/releases) is used as the reference for taxnomic ID. There are other databases available that may be of interest, but these are a good start.
 ```
 sbatch ~/repo/dada2_protocol_16S_10222024/premise/3_dada2_workflow.taxonomic_id.slurm test_run 16S
 ```
