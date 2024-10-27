@@ -25,7 +25,7 @@ elif [[ $locus == "18S-eukaryome-long" ]]; then
 elif [[ $locus == "18S-eukaryome-ITS" ]]; then #throws memory error with basic settings
     db="$HOME/../shared/blast_dbs/eukaryome/General_EUK_ITS_v1.9.fasta"
 else
-    echo "Unrecognized locus. Please input 16S, 18S, or all as the second argument"
+    echo "Unrecognized locus. Please input 16S or 18S as the second argument"
     exit 1
 fi
 
