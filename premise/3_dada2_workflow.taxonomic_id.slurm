@@ -17,7 +17,7 @@ if [[ $locus == "16S" ]]; then
 elif [[ $locus == "18S" ]]; then
     db="$HOME/../shared/blast_dbs/pr2_version_5.0.0_SSU_dada2.fasta"
 elif [[ $locus == "18S-eukaryome" ]]; then
-    db="$HOME/../shared/blast_dbs/eukaryome/General_EUK_SSU_v1.9.fasta";
+    db="$HOME/../shared/blast_dbs/eukaryome/DADA2_EUK_SSU_v1.9.fasta";
 elif [[ $locus == "18S-unite" ]]; then #unite is not recommended. It's not clear any 18S poritions are representative. Would need to clip
     db="$HOME/../shared/blast_dbs/unite_07252023/sh_general_release_dynamic_singletons_allEuk_25.07.2023.fasta";
 elif [[ $locus == "18S-eukaryome-long" ]]; then
